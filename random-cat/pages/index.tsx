@@ -1,13 +1,17 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import { NextPage } from "next";
+ 
+const IndexPage: NextPage = () => {
+  return <div>猫画像予定地</div>;
+};
+export default IndexPage;
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">About</Link>
-    </p>
-  </Layout>
-)
+type Image={
+  url: string;
+};
 
-export default IndexPage
+const fetchImage = async ():Promise<Image> => {
+  const res = await fetch("https://api.thecatapi.com/v1/images/search");
+  const images = await res.json();
+  console.log(images);
+  return images[0];
+};
