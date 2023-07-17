@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
+import styles from "./index.module.css";
 
 const IndexPage: NextPage = () => {
   // ❶ useStateを使って状態を定義する
@@ -23,9 +24,9 @@ const IndexPage: NextPage = () => {
     setLoading(false); // 読込中フラグを倒す
   };
   return (
-    <div>
-      <button onClick={handleClick}>他のにゃんこも見る</button>
-      <div>{loading || <img src={imageUrl} />}</div>
+    <div className={styles.page}>
+      <button onClick={handleClick} className={styles.button}>他のにゃんこも見る</button>
+      <div className={styles.flame}>{loading || <img src={imageUrl} className={styles.img} />}</div>
     </div>
   );
 };
